@@ -12,7 +12,6 @@ do
 	elif ((i % 5 == 0))
 	then
 		echo "Buzz"
-		((i++))
 	else
 	echo "$i"
 	fi
