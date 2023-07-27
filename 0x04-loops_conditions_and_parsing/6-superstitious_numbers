@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #while loop and if and elif
+i=1
 while ((i<=20))
 do
 	echo "$i"
