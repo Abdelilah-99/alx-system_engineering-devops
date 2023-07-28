@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 # list of currently running processes.
-# USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command
+#ps: This is like asking the computer to show us the list of toys (processes) currently playing in the toy box (running on the computer).
+#-a: This tells the computer to show all the toys (processes), not just the ones you are playing with. It includes both your toys and toys that other kids are playing with (processes from all users).
+#-u: This option asks the computer to give us more information about the toys (processes), like who owns the toys (the users running the processes) and how much they are playing (CPU and memory usage).
+#-x: This option tells the computer to show toys (processes) that don't have a specific toy room (terminal) to play in. These toys are playing in the common play area (without a TTY).
+#-f: This option asks the computer to show the toys (processes) in a full format, which means we want to see more details about each toy, like its PID, Parent PID (the toy that started this toy), CPU usage, and memory usage.
+ps -auxf
