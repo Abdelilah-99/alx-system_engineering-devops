@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# The above line disables SC2009 warning for the 'pgrep' command, as per the requirements
+# shellcheck disable=SC2009
+ps -auxf | grep bash
