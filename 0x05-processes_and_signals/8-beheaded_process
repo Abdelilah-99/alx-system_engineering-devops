@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#force kill ma3a sab9 issrar w tarassod
+pkill -9 -f 7-highlander
