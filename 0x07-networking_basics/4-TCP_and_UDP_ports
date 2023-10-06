@@ -8,4 +8,4 @@
 # -p: Show the PID and name of the program to which each socket belongs
 # -e: Show extended information
 
-netstat -n -t -u -l -p -e
+netstat -l -p
