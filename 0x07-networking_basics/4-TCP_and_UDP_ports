@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# The following command displays listening ports along with PID and program names
+# -n: Show numerical addresses instead of resolving hostnames
+# -t: Display TCP ports
+# -u: Display UDP ports
+# -l: Show only listening sockets
+# -p: Show the PID and name of the program to which each socket belongs
+# -e: Show extended information
+
+netstat -n -t -u -l -p -e
