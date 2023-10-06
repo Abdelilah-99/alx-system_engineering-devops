@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
-# a Bash script that pings an IP address passed as an argument. Requirements:
-#+ Accepts a string as an argument
-#+ Displays 'Usage: 5-is_the_host_on_the_network {IP_ADDRESS}' if no argument passed
-#+ Pings the IP 5 times
-
-if [ "$#" -eq 0 ]; then
-   echo 'Usage: 5-is_the_host_on_the_network {IP_ADDRESS}'
+# test if a host id on the network is active or not
+# by sends an Internet Control Message Protocol 
+# (ICMP) Echo Request packet to the target host.
+# The target host receives the packet and processes it.
+# If the target host is online and reachable,
+# it responds with an ICMP Echo Reply packet.
+# The source computer receives the reply packet
+# and measures the round-trip time (RTT) it took for
+# the packet to travel from the source to the target and back.
+if [ $# -lt 1 ]; then
+	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 else
 	ping -c 5 "$1"
 fi
