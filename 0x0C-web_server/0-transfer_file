@@ -10,5 +10,5 @@ src_path="$1"
 ip="$2"
 username="$3"
 dst_path="$4"
-
-scp -i "$dst_path" "$src_path" "$username"@"$ip":~
+OPT="-o StrictHostKeyChecking=no"
+scp $OPT -i "$dst_path" "$src_path" "$username"@"$ip":~
