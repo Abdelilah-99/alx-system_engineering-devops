@@ -8,20 +8,27 @@ echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 var = $(localhost)
 new_string2 = "server {\n\tadd_header X-Server-By $var"
 printf %s "server {
-    listen 80;
-    listen [::]:80 default_server;
+        listen 80 default_server;
+        listen [::]:80 default_server;
 
-    root /var/www/html;
-    index index.html index.html index.htm index.nginx-debian.html;
+        root /var/www/html;
 
-    location /redirect_me {
-        return 301 https://www.facebook.com/Abdelilah.bch99;
-    }
-    error_page 404 /404.html;
-    location = /404.html {
-            root /var/www/html;
-            internal;
-    }
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+        location / {
+                try_files $uri $uri/ =404;
+        }
+        location /redirect_me {
+                return 301 https://www.facebook.com/Abdelilah.bch99;
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+        }
+        error_page 404 /404.html;
+        location = /404.html {
+                root /var/www/html;
+                internal;
+        }
 }" > /etc/nginx/sites-enabled/default
 sudo sed -i -E "s/^server \{/$new_string2/" /etc/nginx/sites-available/default
 sudo service nginx restart
