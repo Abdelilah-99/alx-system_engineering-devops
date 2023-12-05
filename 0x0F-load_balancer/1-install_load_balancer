@@ -30,14 +30,14 @@ defaults
     timeout client  50000
     timeout server  50000
 
-frontend web
+frontend bch_web
     bind *:80
     default_backend servers
 
-backend servers
+backend bch_servers
     balance roundrobin
-    server web-01 <web-01-IP>:80 check
-    server web-02 <web-02-IP>:80 check
+    server 365195-web-01 34.207.227.114:80 check
+    server 365195-web-02 54.234.74.33:80 check
 EOL
 
 # Enable HAProxy to start during system boot
