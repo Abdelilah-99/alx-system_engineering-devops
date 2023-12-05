@@ -44,4 +44,4 @@ EOL
 sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
 
 # Restart HAProxy to apply the changes
-sudo systemctl restart haproxy
+sudo service haproxy start
