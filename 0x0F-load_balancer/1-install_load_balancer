@@ -5,13 +5,18 @@
 sudo apt-get update -y
 
 # Install HAProxy
-sudo apt-get install -y haproxy
+if sudo apt-get install -y haproxy; then
+  echo "HAProxy installation successful"
+else
+  echo "Error: HAProxy installation failed"
+  exit 1
+fi
 
 # Backup the original HAProxy configuration
 sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup
 
 # Create a new HAProxy configuration
-cat <<EOL | sudo tee /etc/haproxy/haproxy.cfg
+haproxy_config="
 global
         log /dev/log    local0
         log /dev/log    local1 notice
@@ -39,7 +44,8 @@ backend BCH-servers
         balance roundrobin
         server 365195-web-01 34.207.227.114 check
         server 365195-web-02 54.234.74.33 check
-EOL
+"
+echo "$haproxy_config" | sudo tee /etc/haproxy/haproxy.cfg >/dev/null
 
 # Enable HAProxy to start during system boot
 sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
