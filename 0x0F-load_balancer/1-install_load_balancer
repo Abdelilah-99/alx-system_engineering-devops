@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-#installs and configures HAproxy in a LBServer
+# Installs and configures HAproxy on a LBServer
+
 # Update package lists
 sudo apt-get update -y
 
@@ -34,7 +35,7 @@ frontend BCH-frontend
         bind *:80
         default_backend BCH-servers
 
-backend BCH-servers-backend
+backend BCH-servers
         balance roundrobin
         server 365195-web-01 34.207.227.114 check
         server 365195-web-02 54.234.74.33 check
@@ -44,4 +45,4 @@ EOL
 sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
 
 # Restart HAProxy to apply the changes
-sudo service haproxy start
+sudo service haproxy restart
